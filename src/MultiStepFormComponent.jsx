@@ -1,6 +1,7 @@
 import React from "react";
 import MultiStepCounter from "../src/multiStepCounter.jsx";
 import MultiStepNav from "../src/multiStepNav.jsx";
+import MultiStepTitle from "../src/multiStepTitle.jsx";
 
 class MultiSteps extends React.Component {
   constructor(props) {
@@ -51,24 +52,47 @@ class MultiSteps extends React.Component {
   };
 
   render() {
-    const disableBack =  {
-      pointerEvents : this.state.currentStep <= 0 ? "none" : "unset", 
+    const disableBack = {
+      pointerEvents: this.state.currentStep <= 0 ? "none" : "unset",
       opacity: this.state.currentStep <= 0 ? 0.5 : 1
-    }
+    };
 
-    const disableNext =  {
-      pointerEvents : this.state.currentStep >= this.state.steps ? "none" : "unset", 
+    const disableNext = {
+      pointerEvents:
+        this.state.currentStep >= this.state.steps ? "none" : "unset",
       opacity: this.state.currentStep >= this.state.steps ? 0.5 : 1
-    }
+    };
 
-    const disableSubmit =  {
-      pointerEvents : Object.keys(this.state.completedSteps).length > this.state.steps ? "unset" : "none", 
-      opacity: Object.keys(this.state.completedSteps).length > this.state.steps ? 1 : 0.5
-    }
-    
+    const disableSubmit = {
+      pointerEvents:
+        Object.keys(this.state.completedSteps).length > this.state.steps
+          ? "unset"
+          : "none",
+      opacity:
+        Object.keys(this.state.completedSteps).length > this.state.steps
+          ? 1
+          : 0.5
+    };
+
+    console.log(
+      "this.props.children[0].props",
+      this.props.children[this.state.currentStep].props.title
+    );
+
     return (
       <div>
-        <MultiStepNav disableBack={disableBack} disableNext={disableNext} disableSubmit={disableSubmit} nextStep={this.nextStep} prevStep={this.prevStep} />
+        <MultiStepNav
+          disableBack={disableBack}
+          disableNext={disableNext}
+          disableSubmit={disableSubmit}
+          nextStep={this.nextStep}
+          prevStep={this.prevStep}
+        />
+        {this.props.children[this.state.currentStep].props.title ? (
+          <MultiStepTitle title={this.props.children[this.state.currentStep].props.title}/>
+        ) : (
+          ""
+        )}
         <div className="multi-step-body">
           {React.cloneElement(this.props.children[this.state.currentStep], {
             className: "firststepclass",
