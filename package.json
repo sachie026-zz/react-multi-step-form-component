@@ -1,6 +1,6 @@
 {
     "name": "multi-step-form-ui",
-    "version": "1.0.6",
+    "version": "1.0.8",
     "description": "Different components are used as a step inside this component",
     "main": "./lib/MultiStepFormComponent.js",
     "keywords": [

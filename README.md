@@ -44,3 +44,17 @@ To mark the step as completd you have to call completed function in following wa
 Here `this.props.stepindex` is mandatory paramater
 
 
+You can set title for your step in following way:
+
+```JavaScript
+ <MultiSteps submitForm = {`<your_submit_callback>`}>
+    <Component1 title = "Step1"/>
+    <Component2 title = "Step1"/>
+    <Component3/>
+</MultiSteps>
+```
+
+Here title property is optional.
+
+
+
