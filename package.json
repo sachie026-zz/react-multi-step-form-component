@@ -11,6 +11,10 @@
     "scripts": {
         "build": "webpack"
     },
+    "repository": {
+      "type" : "git",
+      "url" : "https://github.com/sachie026/react-multi-step-form-component.git"
+    },
     "peerDependencies": {
         "prop-types": "^15.6.0",
         "react": "^16.0.0",
